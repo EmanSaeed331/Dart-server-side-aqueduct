@@ -3,7 +3,6 @@ import 'package:project3/controller/courses_controller.dart';
 import 'project3.dart';
 
 class Project3Channel extends ApplicationChannel {
-  
   @override
   Future prepare() async {
     logger.onRecord.listen(
@@ -16,7 +15,7 @@ class Project3Channel extends ApplicationChannel {
     router.route("/example").linkFunction((request) async {
       return Response.ok({"key": "examples"});
     });
-    router.route('/courses').link(() => CoursesController());
+    router.route('/courses/[:id]').link(() => CoursesController());
 
     return router;
   }
